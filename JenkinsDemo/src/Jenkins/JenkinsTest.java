@@ -22,7 +22,7 @@ public class JenkinsTest
 		
 		System.setProperty("webdriver.chrome.driver", "c:\\chromedriver_win32(1)\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		
+		System.out.println("Hello Jenkins");
 		driver.get("https://www.google.com");
 		
 		driver.manage().window().maximize();
