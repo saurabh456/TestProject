@@ -1,0 +1,7 @@
+ChromeDriverPath=c:\\chromedriver_win32(1)\\chromedriver.exe
+url=https://freecrm.com/
+
+email_address=saurabh.kewal.verma@gmail.com
+password=306090@Fc
+
+browser=chrome
