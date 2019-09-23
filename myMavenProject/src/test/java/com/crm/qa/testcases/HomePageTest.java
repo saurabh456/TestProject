@@ -1,6 +1,7 @@
 package com.crm.qa.testcases;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -11,6 +12,7 @@ import com.crm.qa.base.TestBase;
 import com.crm.qa.pages.ContactsPage;
 import com.crm.qa.pages.HomePage;
 import com.crm.qa.pages.LoginPage;
+
 
 public class HomePageTest extends TestBase {
 	
@@ -29,9 +31,10 @@ public class HomePageTest extends TestBase {
 	} */
 	
 	@Test(priority=0)
-	public void userNameVerificationTest() throws InterruptedException
+	public void userNameVerificationTest()
 	{
 		homepage = new HomePage();
+		
 		Boolean flag = homepage.verifyUserName();
 		
 		Assert.assertTrue(flag);
@@ -39,10 +42,9 @@ public class HomePageTest extends TestBase {
 		Reporter.log("User's Name is now visible");
 	}
 		
-		@Test (priority=1)
-		public void contactsNameVerifyTest() throws InterruptedException
+		@Test(priority=1)
+		public void contactsNameVerifyTest()
 		{
-			Thread.sleep(3000);
 			Boolean flag1 = homepage.contactsNameVerification();
 			System.out.println("At Home-Page, Contact's Name is visible:"+ flag1);
 			Assert.assertTrue(flag1);
@@ -50,13 +52,11 @@ public class HomePageTest extends TestBase {
 			System.out.println("contact Name is visible");
 		}
 		
-		
-		@Test(priority=2, dependsOnMethods="contactsNameVerifyTest")
-		public void clickContactsNameTest() throws InterruptedException
+		@Test(priority=2, alwaysRun=true)
+		public void clickContactsLinkTest()
 		{
-			
-			contactspage = homepage.clickContactsName();
-			Thread.sleep(4000);
+			//driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+			contactspage = homepage.clickContactsLink();
 			
 		}
 		
