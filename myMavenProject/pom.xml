@@ -58,12 +58,6 @@
 						<suiteXmlFile>XMLFiles/${xmlFiles}</suiteXmlFile>
 					</suiteXmlFiles>
 					
-					<systemPropertyVariables>
-					<executionBrowser>${browserName}</executionBrowser>
-					<appURL>${urlToBeTested}</appURL>
-					
-					</systemPropertyVariables>
-					
 				</configuration>
 			</plugin>
 			

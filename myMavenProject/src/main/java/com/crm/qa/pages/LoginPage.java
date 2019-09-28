@@ -20,13 +20,16 @@ public class LoginPage extends TestBase
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(name="email")
-	WebElement email_address;
+	@FindBy(xpath="//li[@class='nav-item']/a[text()='Login']")
+	WebElement loginLink;
 	
-	@FindBy(name="password")
+	@FindBy(xpath="//li[@class='nav-item']//child::div[@class='card-body']/input[@name='password']")
+	WebElement username;
+	
+	@FindBy(xpath="//li[@class='nav-item']//child::div[@class='card-body']/input[@name='username']")
 	WebElement password;
 	
-	@FindBy(xpath="//div[contains(text(),'Login')]")
+	@FindBy(xpath="//li[@class='nav-item']//child::div[@class='card-body']/button[text()='Login']")
 	WebElement loginbutton;
 	
 	//Actions

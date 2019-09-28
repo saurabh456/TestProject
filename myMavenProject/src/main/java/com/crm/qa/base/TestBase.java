@@ -23,7 +23,7 @@ public class TestBase {
 		
 		try {
 		prop=new Properties();
-			FileInputStream ip = new FileInputStream("C:\\Users\\saurabh\\git\\TestProject\\myMavenProject\\Configuration\\config.property");
+			FileInputStream ip = new FileInputStream("./Configuration/config.property");
 			
 			prop.load(ip);
 			
@@ -40,27 +40,27 @@ public class TestBase {
 			}
 	}
 	
-	public static void initialization(String browserName, String url)
+	public static void initialization()
 	{
 		
-		/* String browser_name = prop.getProperty("browser");
-		System.out.println("Browser name is:"+browser_name); */
+		String browser_name = prop.getProperty("browser");
+		//System.out.println("Browser name is:"+browser_name);
 		
-		if(browserName.equalsIgnoreCase("chrome")) 
+		if(browser_name.equalsIgnoreCase("chrome")) 
 		{     
-			System.out.println("Browser-name is:"+browserName);
-			System.setProperty("webdriver.chrome.driver",prop.getProperty("ChromeDriverPath"));
+			System.out.println("Browser-name is:"+browser_name);
+			System.setProperty("webdriver.chrome.driver","./driver/chromedriver.exe");
 			//System.setProperty("webdriver.chrome.driver","D:\\driver\\chromedriver.exe");
 			driver = new ChromeDriver();
 			
 			System.out.println("Chrome driver thread-id is:"+Thread.currentThread().getId());
 		}
 		 
-		else if (browserName.equalsIgnoreCase("firefox"))
+		else if (browser_name.equalsIgnoreCase("firefox"))
 			{
 			
-			System.out.println("Browser-name is:" + browserName);
-			System.setProperty("webdriver.gecko.driver", prop.getProperty("FirefoxDriverPath"));
+			System.out.println("Browser-name is:" + browser_name);
+			System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
 			firefoxOptions.setCapability("marionette", true);
 			driver = new FirefoxDriver(firefoxOptions);
@@ -75,9 +75,9 @@ public class TestBase {
 	 
 	//driver.navigate().to(prop.getProperty("url"));
 	
-	driver.navigate().to(url);
+	driver.navigate().to(prop.getProperty("url"));
 	
-	//Reporter.log("Launching broswer now",true);
+	Reporter.log("Launching broswer now",true);
 	
 	}
 	

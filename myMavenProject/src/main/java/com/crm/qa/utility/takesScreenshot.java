@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.FileHandler;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -106,7 +107,8 @@ static SimpleDateFormat sdf;
   ExtentTestManager.startTest(result.getMethod().getMethodName());
 	}
 
-	public void onTestSuccess(ITestResult result) {
+	public void onTestSuccess(ITestResult result) 
+	{
 		// TODO Auto-generated method stub
 		System.out.println("I am in onTestSuccess method:"+result.getMethod().getConstructorOrMethod().getName()+"TestMethod is Pass");
 		ExtentTestManager.getTest().log(Status.PASS, "Test passed");

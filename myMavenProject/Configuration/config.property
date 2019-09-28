@@ -1,9 +1,6 @@
-ChromeDriverPath = C:\\selenium_driver\\chromedriver.exe
-FirefoxDriverPath = C:\\selenium_driver\\geckodriver.exe
+url=https://autothon-nagarro-frontend-x12.azurewebsites.net/
 
-url=https://freecrm.com/
-
-email_address=saurabh.kewal.verma@gmail.com
-password=306090@Fc
+username=admin
+password=password
 
 browser = chrome

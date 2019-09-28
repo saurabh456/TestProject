@@ -12,6 +12,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.crm.qa.base.TestBase;
+import com.crm.qa.pages.HomePage;
 import com.crm.qa.pages.LandingPage;
 import com.crm.qa.pages.LoginPage;
 import com.crm.qa.utility.ExtentReports.ExtentTestManager;
@@ -21,30 +22,39 @@ import net.bytebuddy.dynamic.NexusAccessor.InitializationAppender;
 public class LandingPageTest extends TestBase {
 	
 	LandingPage landingpage;
-	LoginPage loginpage;
+	HomePage homepage;
 	
 	public LandingPageTest()
 	{
 	super();
 	}
 	
-	@Parameters({"browserName","urlToBeTested"})
 	@BeforeTest
-	public void setUp(String browserName, String urlToBeTested)
+	public void setUp()
 	{
-		initialization(browserName, urlToBeTested);
+		initialization();
 		landingpage = new LandingPage();
 	}
 	
-	@Test
-	public void loginButtonTest()
+	@Test (priority=1, description="Clicking on loginLink")
+	public void clickLoginLinkTest()
 	{
-		loginpage = landingpage.clickLoginButton();
+		landingpage.clickLoginLink();
 		
-		if(loginpage !=null)
-		{
-		ExtentTestManager.getTest().pass("Succesfully clicked Submit button");
+		ExtentTestManager.getTest().pass("Succesfully clicked LoginLink button");
 		}
+	
+	@Test (priority=2, description="Performing Log-in activity")
+	
+	public void loginTest() throws InterruptedException
+	{
+		
+	homepage = landingpage.login(prop.getProperty("username"), prop.getProperty("password"));
+	
+	if(homepage !=null)
+	{
+		ExtentTestManager.getTest().pass("Succesfully Logged-in to Application");
+	}
 	}
 	
 	 @AfterTest
@@ -52,7 +62,7 @@ public class LandingPageTest extends TestBase {
      {
 		 if(driver !=null)
 		 System.out.println("Closing the browser");
-     driver.quit();
+         driver.quit();
      }
 	
 }
